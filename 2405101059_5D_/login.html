@@ -1,0 +1,711 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Masuk | Perpustakaan Kita</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- CSS khusus halaman login -->
+    <style>
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(
+                    circle at 15% 15%,
+                    rgba(59, 130, 246, 0.15),
+                    transparent 35%
+                ),
+                #0b1120;
+        }
+
+        .login-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-navbar {
+            padding: 25px 0;
+        }
+
+        .login-navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: #94a3b8;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .back-home:hover {
+            color: #60a5fa;
+        }
+
+        .login-main {
+            flex: 1;
+            display: grid;
+            place-items: center;
+            padding: 30px 20px 60px;
+        }
+
+        .login-layout {
+            width: min(100%, 1000px);
+            display: grid;
+            grid-template-columns: 1fr 0.9fr;
+            align-items: center;
+            gap: 65px;
+        }
+
+        .login-intro h1 {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-size: clamp(35px, 4vw, 52px);
+            line-height: 1.2;
+            letter-spacing: -1.5px;
+            margin: 20px 0;
+        }
+
+        .login-intro h1 span {
+            color: #60a5fa;
+        }
+
+        .login-intro > p {
+            max-width: 410px;
+            color: #94a3b8;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .login-illustration {
+            margin-top: 35px;
+            min-height: 190px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            border: 1px solid rgba(148, 163, 184, 0.12);
+            border-radius: 20px;
+            background: linear-gradient(
+                135deg,
+                rgba(30, 64, 175, 0.16),
+                rgba(30, 41, 59, 0.3)
+            );
+        }
+
+        .login-book {
+            width: 105px;
+            height: 145px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            border-radius: 5px 10px 10px 5px;
+            border-left: 5px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .login-book i {
+            font-size: 30px;
+        }
+
+        .login-book span {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .book-one {
+            background: linear-gradient(145deg, #3b82f6, #1e3a8a);
+            transform: rotate(-8deg);
+        }
+
+        .book-two {
+            background: linear-gradient(145deg, #8b5cf6, #4c1d95);
+            transform: translateY(-12px);
+        }
+
+        .book-three {
+            background: linear-gradient(145deg, #0d9488, #134e4a);
+            transform: rotate(8deg);
+        }
+
+        .login-card {
+            padding: 38px;
+            border: 1px solid rgba(148, 163, 184, 0.15);
+            border-radius: 22px;
+            background: rgba(20, 31, 53, 0.95);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+        }
+
+        .login-card-header {
+            margin-bottom: 30px;
+        }
+
+        .login-card-header h2 {
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        .login-card-header p {
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        .login-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .login-form label {
+            display: block;
+            margin-bottom: 9px;
+            color: #e2e8f0;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper > i {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            height: 48px;
+            padding: 0 45px;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            background: #0f172a;
+            color: #f8fafc;
+            font-size: 12px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-wrapper input::placeholder {
+            color: #64748b;
+        }
+
+        .input-wrapper input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+        }
+
+        .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 14px;
+            transform: translateY(-50%);
+            padding: 5px;
+            border: none;
+            background: transparent;
+            color: #64748b;
+            cursor: pointer;
+        }
+
+        .toggle-password:hover {
+            color: #60a5fa;
+        }
+
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin: 4px 0 24px;
+            font-size: 11px;
+        }
+
+        .remember-option {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: #94a3b8;
+        }
+
+        .remember-option input {
+            accent-color: #3b82f6;
+        }
+
+        .forgot-password {
+            color: #60a5fa;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .login-submit {
+            width: 100%;
+            min-height: 48px;
+            border: none;
+            border-radius: 10px;
+            background: #3b82f6;
+            color: white;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .login-submit:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .login-submit i {
+            margin-left: 8px;
+        }
+
+        .login-message {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 9px;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .login-message.show {
+            display: block;
+        }
+
+        .login-message.error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+        }
+
+        .login-message.success {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #86efac;
+        }
+
+        .login-divider {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 25px 0;
+            color: #64748b;
+            font-size: 11px;
+        }
+
+        .login-divider::before,
+        .login-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: rgba(148, 163, 184, 0.15);
+        }
+
+        .demo-info {
+            padding: 13px;
+            border: 1px dashed rgba(96, 165, 250, 0.3);
+            border-radius: 10px;
+            background: rgba(59, 130, 246, 0.06);
+            color: #94a3b8;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        .demo-info strong {
+            color: #93c5fd;
+        }
+
+        .demo-button {
+            width: 100%;
+            margin-top: 12px;
+            padding: 11px;
+            border: 1px solid #334155;
+            border-radius: 9px;
+            background: transparent;
+            color: #e2e8f0;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .demo-button:hover {
+            border-color: #60a5fa;
+            color: #60a5fa;
+        }
+
+        .register-text {
+            margin-top: 25px;
+            color: #94a3b8;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .register-text a {
+            color: #60a5fa;
+            font-weight: 700;
+        }
+
+        .register-text a:hover {
+            text-decoration: underline;
+        }
+
+        .login-footer {
+            padding: 20px;
+            text-align: center;
+            color: #64748b;
+            font-size: 11px;
+        }
+
+        @media (max-width: 800px) {
+            .login-layout {
+                grid-template-columns: 1fr;
+                max-width: 470px;
+                gap: 35px;
+            }
+
+            .login-intro {
+                text-align: center;
+            }
+
+            .login-intro > p {
+                margin: 0 auto;
+            }
+
+            .login-illustration {
+                min-height: 160px;
+                margin-top: 25px;
+            }
+
+            .login-book {
+                width: 80px;
+                height: 115px;
+            }
+
+            .login-book i {
+                font-size: 24px;
+            }
+
+            .login-book span {
+                font-size: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login-navbar {
+                padding: 18px 0;
+            }
+
+            .login-navbar .container {
+                gap: 10px;
+            }
+
+            .back-home {
+                font-size: 11px;
+            }
+
+            .login-main {
+                padding: 25px 16px 40px;
+            }
+
+            .login-card {
+                padding: 25px 20px;
+            }
+
+            .login-intro h1 {
+                font-size: 35px;
+            }
+
+            .login-card-header h2 {
+                font-size: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-page">
+
+    <!-- NAVBAR -->
+    <header class="login-navbar">
+        <div class="container">
+
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">
+                    <i class="fa-solid fa-book-open"></i>
+                </span>
+
+                <span>
+                    Perpustakaan<span class="logo-accent">Kita.</span>
+                </span>
+            </a>
+
+            <a href="../index.html" class="back-home">
+                <i class="fa-solid fa-arrow-left"></i>
+                Kembali ke Beranda
+            </a>
+
+        </div>
+    </header>
+
+
+    <!-- LOGIN CONTENT -->
+    <main class="login-main">
+
+        <div class="login-layout">
+
+            <!-- LEFT CONTENT -->
+            <section class="login-intro">
+
+                <span class="hero-badge">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    RUANG LITERASI DIGITAL
+                </span>
+
+                <h1>
+                    Selamat Datang<br>
+                    di <span>Dunia Buku.</span>
+                </h1>
+
+                <p>
+                    Masuk ke akunmu dan lanjutkan perjalanan literasi.
+                    Temukan bacaan favorit, jelajahi pengetahuan baru,
+                    dan kelola aktivitas perpustakaanmu dengan mudah.
+                </p>
+
+                <div class="login-illustration">
+
+                    <div class="login-book book-one">
+                        <i class="fa-solid fa-code"></i>
+                        <span>TEKNOLOGI</span>
+                    </div>
+
+                    <div class="login-book book-two">
+                        <i class="fa-solid fa-book-open"></i>
+                        <span>LITERASI</span>
+                    </div>
+
+                    <div class="login-book book-three">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <span>INSPIRASI</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- RIGHT LOGIN FORM -->
+            <section class="login-card">
+
+                <div class="login-card-header">
+
+                    <span class="section-label">
+                        AKUN ANGGOTA
+                    </span>
+
+                    <h2>Masuk ke Akun</h2>
+
+                    <p>
+                        Masukkan nama pengguna dan kata sandimu.
+                    </p>
+
+                </div>
+
+
+                <form class="login-form" id="loginForm">
+
+                    <!-- USERNAME -->
+                    <div class="form-group">
+
+                        <label for="username">
+                            Nama Pengguna
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-user"></i>
+
+                            <input
+                                type="text"
+                                id="username"
+                                name="username"
+                                placeholder="Masukkan nama pengguna"
+                                autocomplete="username"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+                    <div class="form-group">
+
+                        <label for="password">
+                            Kata Sandi
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Masukkan kata sandi"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="toggle-password"
+                                id="togglePassword"
+                                aria-label="Tampilkan kata sandi"
+                            >
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- OPTIONS -->
+                    <div class="login-options">
+
+                        <label class="remember-option">
+                            <input
+                                type="checkbox"
+                                id="rememberMe"
+                            >
+                            Ingat saya
+                        </label>
+
+                        <a
+                            href="#"
+                            class="forgot-password"
+                            id="forgotPassword"
+                        >
+                            Lupa kata sandi?
+                        </a>
+
+                    </div>
+
+
+                    <!-- SUBMIT -->
+                    <button
+                        type="submit"
+                        class="login-submit"
+                    >
+                        Masuk Sekarang
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+
+                    <!-- MESSAGE -->
+                    <div
+                        class="login-message"
+                        id="loginMessage"
+                        role="status"
+                        aria-live="polite"
+                    ></div>
+
+                </form>
+
+
+                <div class="login-divider">
+                    ATAU
+                </div>
+
+
+                <!-- DEMO ACCOUNT -->
+                <div class="demo-info">
+
+                    <strong>
+                        <i class="fa-solid fa-circle-info"></i>
+                        Akun Demo
+                    </strong>
+
+                    <br>
+
+                    Nama pengguna:
+                    <strong>siswa</strong>
+
+                    <br>
+
+                    Kata sandi:
+                    <strong>1234</strong>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="demo-button"
+                    id="demoButton"
+                >
+                    <i class="fa-solid fa-bolt"></i>
+                    Isi Akun Demo
+                </button>
+
+
+                <p class="register-text">
+                    Belum memiliki akun?
+                    <a href="../register/register.html">Daftar sekarang</a>
+                </p>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="login-footer">
+
+        <p>
+            &copy; <span id="currentYear"></span>
+            Perpustakaan Kita. Semua hak dilindungi.
+        </p>
+
+    </footer>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+<script src="login.js"></script>
+
+</body>
+</html>

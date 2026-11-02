@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Perpustakaan Kita | Temukan Dunia dalam Buku</title>
+
+    <meta name="description" content="Perpustakaan Kita, tempat menemukan buku, menambah wawasan, dan membangun budaya literasi.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="container nav-container">
+
+        <a href="index.html" class="logo">
+            <span class="logo-icon">
+                <i class="fa-solid fa-book-open"></i>
+            </span>
+            <span>Perpustakaan<span class="logo-accent">Kita.</span></span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <nav class="nav-menu" id="navMenu">
+            <a href="#beranda" class="nav-link active">Beranda</a>
+            <a href="#koleksi" class="nav-link">Koleksi Buku</a>
+            <a href="#layanan" class="nav-link">Layanan</a>
+            <a href="#tentang" class="nav-link">Tentang Kami</a>
+
+            <a href="login/login.html" class="btn btn-outline nav-login">
+                Masuk <i class="fa-solid fa-arrow-right-to-bracket"></i>
+            </a>
+
+            <a href="register/register.html" class="btn btn-primary nav-register">
+                Daftar <i class="fa-solid fa-user-plus"></i>
+            </a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <section class="hero" id="beranda">
+        <div class="container hero-container">
+
+            <div class="hero-content">
+
+                <div class="hero-badge">
+                    <i class="fa-solid fa-book-bookmark"></i>
+                    <span>Ruang Belajar Tanpa Batas</span>
+                </div>
+
+                <h1>
+                    Buka Buku,<br>
+                    <span>Buka Dunia.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Temukan inspirasi dari ribuan bacaan, perluas wawasan,
+                    dan tumbuh bersama budaya literasi di Perpustakaan Kita.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#koleksi" class="btn btn-primary">
+                        Jelajahi Koleksi
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                    <a href="#tentang" class="btn btn-secondary">
+                        <i class="fa-regular fa-circle-play"></i>
+                        Tentang Kami
+                    </a>
+                </div>
+
+                <div class="hero-stats">
+
+                    <div class="stat-item">
+                        <h3>1.000<span>+</span></h3>
+                        <p>Koleksi Buku</p>
+                    </div>
+
+                    <div class="stat-item">
+                        <h3>500<span>+</span></h3>
+                        <p>Anggota</p>
+                    </div>
+
+                    <div class="stat-item">
+                        <h3>50<span>+</span></h3>
+                        <p>Kategori</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="hero-visual">
+
+                <div class="visual-glow"></div>
+
+                <div class="floating-card floating-card-top">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <div>
+                        <strong>Mulai Membaca</strong>
+                        <span>Perluas wawasanmu</span>
+                    </div>
+                </div>
+
+                <div class="book-showcase">
+                    <div class="showcase-label">
+                        <i class="fa-solid fa-star"></i>
+                        Rekomendasi Minggu Ini
+                    </div>
+
+                    <div class="showcase-book">
+                        <div class="book-cover cover-main">
+                            <div class="cover-decoration"></div>
+                            <span class="cover-small">SEBUAH PERJALANAN</span>
+                            <h3>Filosofi<br>Terbuka</h3>
+                            <span class="cover-author">RUANG UNTUK BERPIKIR</span>
+                            <i class="fa-solid fa-mountain-sun cover-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="showcase-info">
+                        <span class="book-category">PENGEMBANGAN DIRI</span>
+                        <h3>Temukan Perspektif Baru</h3>
+                        <p>Setiap halaman punya cerita.</p>
+                    </div>
+                </div>
+
+                <div class="floating-card floating-card-bottom">
+                    <div class="avatar-stack">
+                        <span><i class="fa-solid fa-user"></i></span>
+                        <span><i class="fa-solid fa-user"></i></span>
+                        <span><i class="fa-solid fa-user"></i></span>
+                    </div>
+                    <div>
+                        <strong>Komunitas Literasi</strong>
+                        <span>Belajar bersama</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="search-section">
+        <div class="container">
+
+            <div class="search-box">
+                <div class="search-icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Cari judul buku, penulis, atau kategori..."
+                    aria-label="Cari buku"
+                >
+
+                <button class="btn btn-primary search-button" id="searchButton">
+                    Cari Buku
+                </button>
+            </div>
+
+            <div class="search-hint">
+                <span>Pencarian populer:</span>
+                <button class="search-tag" data-search="teknologi">Teknologi</button>
+                <button class="search-tag" data-search="novel">Novel</button>
+                <button class="search-tag" data-search="bisnis">Bisnis</button>
+                <button class="search-tag" data-search="sejarah">Sejarah</button>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section collection-section" id="koleksi">
+        <div class="container">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">JELAJAHI PERPUSTAKAAN</span>
+                    <h2>Temukan Bacaan Favoritmu</h2>
+                    <p>Dari pengetahuan hingga hiburan, pilih bacaan yang sesuai minatmu.</p>
+                </div>
+
+                <a href="login.html" class="text-link">
+                    Lihat Koleksi <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="category-list">
+                <button class="category-btn active" data-category="semua">Semua Buku</button>
+                <button class="category-btn" data-category="teknologi">Teknologi</button>
+                <button class="category-btn" data-category="novel">Novel</button>
+                <button class="category-btn" data-category="bisnis">Bisnis</button>
+                <button class="category-btn" data-category="sejarah">Sejarah</button>
+            </div>
+
+            <div class="book-grid" id="bookGrid">
+
+                <article class="book-card"
+                    data-title="Belajar Pemrograman Web"
+                    data-author="Tim Informatika"
+                    data-category="teknologi">
+
+                    <div class="book-cover-area">
+                        <span class="book-badge">Populer</span>
+                        <div class="book-cover cover-blue">
+                            <i class="fa-solid fa-code"></i>
+                            <h3>Belajar<br>Pemrograman<br>Web</h3>
+                            <span>PANDUAN PEMULA</span>
+                        </div>
+                    </div>
+
+                    <div class="book-details">
+                        <span class="book-type">TEKNOLOGI</span>
+                        <h3>Belajar Pemrograman Web</h3>
+                        <p class="book-author">Tim Informatika</p>
+
+                        <div class="book-footer">
+                            <span><i class="fa-regular fa-bookmark"></i> Buku referensi</span>
+                            <button class="detail-btn" data-book="Belajar Pemrograman Web">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="book-card"
+                    data-title="Senja di Ujung Cerita"
+                    data-author="Koleksi Fiksi"
+                    data-category="novel">
+
+                    <div class="book-cover-area">
+                        <span class="book-badge badge-purple">Pilihan</span>
+                        <div class="book-cover cover-purple">
+                            <i class="fa-solid fa-moon"></i>
+                            <h3>Senja di<br>Ujung Cerita</h3>
+                            <span>SEBUAH NOVEL</span>
+                        </div>
+                    </div>
+
+                    <div class="book-details">
+                        <span class="book-type">NOVEL</span>
+                        <h3>Senja di Ujung Cerita</h3>
+                        <p class="book-author">Koleksi Fiksi</p>
+
+                        <div class="book-footer">
+                            <span><i class="fa-regular fa-bookmark"></i> Buku fiksi</span>
+                            <button class="detail-btn" data-book="Senja di Ujung Cerita">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="book-card"
+                    data-title="Membangun Bisnis Digital"
+                    data-author="Tim Bisnis"
+                    data-category="bisnis">
+
+                    <div class="book-cover-area">
+                        <span class="book-badge badge-orange">Rekomendasi</span>
+                        <div class="book-cover cover-orange">
+                            <i class="fa-solid fa-chart-line"></i>
+                            <h3>Bisnis<br>Digital</h3>
+                            <span>IDE MENJADI AKSI</span>
+                        </div>
+                    </div>
+
+                    <div class="book-details">
+                        <span class="book-type">BISNIS</span>
+                        <h3>Membangun Bisnis Digital</h3>
+                        <p class="book-author">Tim Bisnis</p>
+
+                        <div class="book-footer">
+                            <span><i class="fa-regular fa-bookmark"></i> Buku referensi</span>
+                            <button class="detail-btn" data-book="Membangun Bisnis Digital">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="book-card"
+                    data-title="Jejak Sejarah Nusantara"
+                    data-author="Tim Sejarah"
+                    data-category="sejarah">
+
+                    <div class="book-cover-area">
+                        <span class="book-badge badge-green">Pilihan</span>
+                        <div class="book-cover cover-green">
+                            <i class="fa-solid fa-landmark"></i>
+                            <h3>Jejak<br>Sejarah<br>Nusantara</h3>
+                            <span>MENELUSURI MASA LALU</span>
+                        </div>
+                    </div>
+
+                    <div class="book-details">
+                        <span class="book-type">SEJARAH</span>
+                        <h3>Jejak Sejarah Nusantara</h3>
+                        <p class="book-author">Tim Sejarah</p>
+
+                        <div class="book-footer">
+                            <span><i class="fa-regular fa-bookmark"></i> Buku referensi</span>
+                            <button class="detail-btn" data-book="Jejak Sejarah Nusantara">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <p class="empty-message" id="emptyMessage">
+                Buku tidak ditemukan. Coba kata kunci lainnya.
+            </p>
+
+        </div>
+    </section>
+
+    <section class="section benefits-section" id="layanan">
+        <div class="container">
+
+            <div class="section-heading centered">
+                <span class="section-label">KENAPA MEMILIH KAMI?</span>
+                <h2>Belajar Jadi Lebih Mudah</h2>
+                <p>Kami hadir untuk mendukung kebiasaan membaca dan belajar sepanjang hayat.</p>
+            </div>
+
+            <div class="benefit-grid">
+
+                <div class="benefit-card">
+                    <div class="benefit-icon icon-blue">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <h3>Koleksi Beragam</h3>
+                    <p>Temukan bacaan dari berbagai bidang ilmu, hobi, dan pengembangan diri.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon icon-purple">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <h3>Pencarian Mudah</h3>
+                    <p>Temukan buku yang kamu inginkan melalui pencarian berdasarkan judul dan kategori.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon icon-green">
+                        <i class="fa-solid fa-people-group"></i>
+                    </div>
+                    <h3>Ruang Literasi</h3>
+                    <p>Bangun kebiasaan membaca dan tumbuh bersama komunitas yang gemar belajar.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section about-section" id="tentang">
+        <div class="container about-container">
+
+            <div class="about-visual">
+                <div class="about-icon">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                </div>
+
+                <div class="about-decoration decoration-one"></div>
+                <div class="about-decoration decoration-two"></div>
+
+                <div class="about-quote">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>Membaca adalah investasi terbaik untuk masa depan.</p>
+                </div>
+            </div>
+
+            <div class="about-content">
+                <span class="section-label">TENTANG PERPUSTAKAAN KITA</span>
+
+                <h2>Lebih dari Sekadar Tempat Membaca</h2>
+
+                <p>
+                    Perpustakaan Kita adalah konsep perpustakaan yang dirancang
+                    untuk memudahkan mahasiswa dan masyarakat dalam menemukan
+                    sumber bacaan, mendapatkan pengetahuan, dan membangun
+                    budaya literasi.
+                </p>
+
+                <p>
+                    Kami percaya bahwa akses informasi yang mudah dapat
+                    membantu setiap orang berkembang dan meraih potensi terbaiknya.
+                </p>
+
+                <a href="#koleksi" class="btn btn-primary">
+                    Mulai Jelajahi
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+
+                <div class="cta-decoration"></div>
+
+                <div class="cta-content">
+                    <span class="cta-label">WAKTUNYA MEMULAI</span>
+                    <h2>Satu Buku, Banyak Kemungkinan.</h2>
+                    <p>Mulai perjalanan literasimu bersama Perpustakaan Kita.</p>
+                </div>
+
+                <a href="register.html" class="btn btn-light">
+                    Gabung Sekarang
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <div class="container">
+
+        <div class="footer-main">
+
+            <div class="footer-brand">
+                <a href="#beranda" class="logo">
+                    <span class="logo-icon">
+                        <i class="fa-solid fa-book-open"></i>
+                    </span>
+                    <span>Perpustakaan<span class="logo-accent">Kita.</span></span>
+                </a>
+
+                <p>
+                    Tempat menemukan bacaan baru, menambah wawasan,
+                    dan tumbuh bersama lewat literasi.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Navigasi</h3>
+                <a href="#beranda">Beranda</a>
+                <a href="#koleksi">Koleksi Buku</a>
+                <a href="#layanan">Layanan</a>
+                <a href="#tentang">Tentang Kami</a>
+            </div>
+
+            <div class="footer-links">
+                <h3>Akun</h3>
+                <a href="login.html">Masuk</a>
+                <a href="register.html">Daftar</a>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Temukan Kami</h3>
+                <p>
+                    <i class="fa-solid fa-phone"></i>
+                    No. Telp: 089528670775
+                </p>
+                <p>
+                    <i class="fa-solid fa-envelope"></i>
+                    info@perpustakaankita.id
+                </p>
+                <p>
+                    <i class="fa-solid fa-location-dot"></i>
+                    Magetan, Jawa Timur
+                </p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <span id="currentYear"></span> Perpustakaan Kita. Semua hak dilindungi.</p>
+
+            <a href="#beranda" class="back-to-top">
+                Kembali ke atas <i class="fa-solid fa-arrow-up"></i>
+            </a>
+        </div>
+
+    </div>
+</footer>
+
+<div class="modal" id="bookModal" aria-hidden="true">
+    <div class="modal-content">
+
+        <button class="modal-close" id="modalClose" aria-label="Tutup">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="modal-icon">
+            <i class="fa-solid fa-book-open"></i>
+        </div>
+
+        <span class="section-label">DETAIL KOLEKSI</span>
+        <h2 id="modalBookTitle">Judul Buku</h2>
+
+        <p>
+            Buku ini merupakan contoh data koleksi pada tampilan
+            Perpustakaan Kita. Informasi penulis, penerbit, dan
+            ketersediaan perlu disesuaikan dengan data buku sebenarnya.
+        </p>
+
+        <button class="btn btn-primary modal-ok" id="modalOk">
+            Mengerti
+        </button>
+
+    </div>
+</div>
+
+<script src="assets/js/main.js"></script>
+<script src="register/register.js"></script>
+<script src="login/login.js"></script>
+</body>
+</html>

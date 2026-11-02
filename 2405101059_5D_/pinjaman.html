@@ -1,0 +1,727 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinjaman Buku | Perpustakaan Kita</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #0b1120;
+            --card: #141f35;
+            --card-light: #1b2942;
+            --primary: #3b82f6;
+            --primary-light: #60a5fa;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --border: rgba(148, 163, 184, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: "DM Sans", sans-serif;
+            font-size: 14px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button, input, select {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .container {
+            width: min(1160px, 92%);
+            margin: auto;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11, 17, 32, 0.94);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-content {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-size: 17px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .logo-icon {
+            width: 39px;
+            height: 39px;
+            display: grid;
+            place-items: center;
+            color: white;
+            background: var(--primary);
+            border-radius: 12px;
+        }
+
+        .logo-accent {
+            color: var(--primary-light);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 23px;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 12px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-light);
+        }
+
+        /* HERO */
+
+        .hero {
+            padding: 65px 0 50px;
+            background: radial-gradient(
+                circle at 85% 25%,
+                rgba(59, 130, 246, 0.18),
+                transparent 35%
+            );
+        }
+
+        .hero-content {
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 9px 13px;
+            border: 1px solid rgba(96, 165, 250, 0.25);
+            border-radius: 50px;
+            background: rgba(59, 130, 246, 0.09);
+            color: var(--primary-light);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            margin: 22px 0 15px;
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-size: clamp(35px, 5vw, 52px);
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            color: var(--primary-light);
+        }
+
+        .hero p {
+            max-width: 580px;
+            margin: auto;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        /* SECTION */
+
+        .section {
+            padding: 25px 0 75px;
+        }
+
+        .section-heading {
+            margin-bottom: 25px;
+        }
+
+        .section-label {
+            color: var(--primary-light);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        .section-heading h2 {
+            margin-top: 10px;
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-size: 28px;
+        }
+
+        .section-heading p {
+            margin-top: 10px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        /* INFORMATION CARDS */
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 45px;
+        }
+
+        .info-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 22px;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            background: var(--card);
+        }
+
+        .info-icon {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 13px;
+            background: rgba(59, 130, 246, 0.13);
+            color: var(--primary-light);
+            font-size: 19px;
+        }
+
+        .info-card h3 {
+            font-size: 13px;
+        }
+
+        .info-card p {
+            margin-top: 5px;
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        /* FORM */
+
+        .form-card {
+            padding: 30px;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            background: var(--card);
+            margin-bottom: 55px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            color: #cbd5e1;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            height: 46px;
+            padding: 0 14px;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            outline: none;
+            background: #0b172b;
+            color: white;
+            font-size: 12px;
+            color-scheme: dark;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+        }
+
+        .form-group input::placeholder {
+            color: #64748b;
+        }
+
+        .form-note {
+            margin-top: 20px;
+            padding: 13px 15px;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            border-radius: 9px;
+            background: rgba(59, 130, 246, 0.08);
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+        .form-note i {
+            color: var(--primary-light);
+            margin-right: 6px;
+        }
+
+        .btn {
+            min-height: 43px;
+            padding: 0 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: 1px solid transparent;
+            border-radius: 9px;
+            font-size: 12px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            color: white;
+            background: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .submit-area {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 22px;
+        }
+
+        /* SEARCH HISTORY */
+
+        .history-search {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 14px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--card);
+            margin-bottom: 20px;
+        }
+
+        .history-search i {
+            color: var(--muted);
+        }
+
+        .history-search input {
+            width: 100%;
+            height: 35px;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: white;
+            font-size: 12px;
+        }
+
+        /* TABLE */
+
+        .table-wrapper {
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--card);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 750px;
+        }
+
+        th, td {
+            padding: 17px 18px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            font-size: 11px;
+        }
+
+        th {
+            background: #1b2942;
+            color: var(--primary-light);
+            font-size: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            color: #cbd5e1;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .status {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 30px;
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        .status.pending {
+            color: #fbbf24;
+            background: rgba(245, 158, 11, 0.12);
+        }
+
+        .status.approved {
+            color: #4ade80;
+            background: rgba(34, 197, 94, 0.12);
+        }
+
+        .status.rejected {
+            color: #fb7185;
+            background: rgba(244, 63, 94, 0.12);
+        }
+
+        .empty-message {
+            display: none;
+            padding: 35px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            padding: 28px 0;
+            border-top: 1px solid var(--border);
+            background: #080d18;
+            color: #64748b;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 760px) {
+            .nav-content {
+                min-height: 68px;
+                flex-wrap: wrap;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 15px;
+                padding-bottom: 15px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .form-card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 14px;
+            }
+
+            .nav-links a {
+                font-size: 10px;
+            }
+
+            .hero {
+                padding-top: 45px;
+            }
+
+            .section-heading h2 {
+                font-size: 23px;
+            }
+
+            .submit-area .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="container nav-content">
+
+            <a href="../Beranda/beranda.html" class="logo">
+                <span class="logo-icon">
+                    <i class="fa-solid fa-book-open"></i>
+                </span>
+
+                <span>
+                    Perpustakaan<span class="logo-accent">Kita.</span>
+                </span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="../Beranda/beranda.html">Beranda</a>
+                <a href="../katalog/katalog.html">Katalog</a>
+                <a href="pinjaman.html" class="active">Pinjaman</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container hero-content">
+
+            <span class="badge">
+                <i class="fa-solid fa-book-bookmark"></i>
+                LAYANAN PEMINJAMAN
+            </span>
+
+            <h1>Pinjaman <span>Buku.</span></h1>
+
+            <p>
+                Ajukan peminjaman buku dengan mudah melalui Perpustakaan Kita.
+                Isi data diri dan pilih buku yang ingin kamu pinjam.
+            </p>
+
+        </div>
+    </section>
+
+    <main class="section">
+        <div class="container">
+
+            <!-- INFORMASI -->
+            <div class="info-grid">
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fa-solid fa-book"></i>
+                    </div>
+                    <div>
+                        <h3>Pilih Buku</h3>
+                        <p>Tentukan buku yang ingin dipinjam.</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+                    <div>
+                        <h3>Tentukan Tanggal</h3>
+                        <p>Atur tanggal peminjaman dan pengembalian.</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                    </div>
+                    <div>
+                        <h3>Pantau Pinjaman</h3>
+                        <p>Lihat riwayat pengajuan peminjamanmu.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- FORM PEMINJAMAN -->
+            <div class="section-heading">
+                <span class="section-label">FORMULIR ANGGOTA</span>
+                <h2>Ajukan Peminjaman</h2>
+                <p>Lengkapi informasi berikut untuk mengajukan peminjaman buku.</p>
+            </div>
+
+            <div class="form-card">
+
+                <form id="loanForm">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="memberName">Nama Lengkap</label>
+                            <input
+                                type="text"
+                                id="memberName"
+                                placeholder="Masukkan nama lengkap"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="memberNim">NIM / ID Anggota</label>
+                            <input
+                                type="text"
+                                id="memberNim"
+                                placeholder="Masukkan NIM atau ID anggota"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group full">
+                            <label for="bookTitle">Pilih Judul Buku</label>
+                            <select id="bookTitle" required>
+                                <option value="">-- Pilih Buku --</option>
+                                <option value="Dasar-Dasar Pemrograman">Dasar-Dasar Pemrograman</option>
+                                <option value="Belajar Web Development">Belajar Web Development</option>
+                                <option value="Pengantar Ilmu Pendidikan">Pengantar Ilmu Pendidikan</option>
+                                <option value="Laskar Pelangi">Laskar Pelangi</option>
+                                <option value="Sejarah Indonesia">Sejarah Indonesia</option>
+                                <option value="Bumi">Bumi</option>
+                                <option value="Algoritma dan Struktur Data" disabled>Algoritma dan Struktur Data (Stok Habis)</option>
+                                <option value="Belajar Efektif di Perguruan Tinggi">Belajar Efektif di Perguruan Tinggi</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="borrowDate">Tanggal Peminjaman</label>
+                            <input type="date" id="borrowDate" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="returnDate">Tanggal Pengembalian</label>
+                            <input type="date" id="returnDate" required>
+                        </div>
+
+                    </div>
+
+                    <div class="form-note">
+                        <i class="fa-solid fa-circle-info"></i>
+                        Pastikan data yang kamu masukkan sudah benar.
+                        Pengajuan akan ditampilkan dengan status menunggu persetujuan.
+                    </div>
+
+                    <div class="submit-area">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            Ajukan Peminjaman
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+            <!-- RIWAYAT -->
+            <div class="section-heading">
+                <span class="section-label">DATA PEMINJAMAN</span>
+                <h2>Riwayat Peminjaman</h2>
+                <p>Daftar pengajuan peminjaman yang tersimpan di browser ini.</p>
+            </div>
+
+            <div class="history-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                    type="search"
+                    id="historySearch"
+                    placeholder="Cari nama, NIM, atau judul buku..."
+                >
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>NAMA ANGGOTA</th>
+                            <th>NIM</th>
+                            <th>JUDUL BUKU</th>
+                            <th>TANGGAL PINJAM</th>
+                            <th>TANGGAL KEMBALI</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="loanTableBody"></tbody>
+                </table>
+
+                <div class="empty-message" id="emptyMessage">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <p>Belum ada data peminjaman.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>
+                &copy; <span id="currentYear"></span>
+                Perpustakaan Kita. Semua Hak Dilindungi.
+            </p>
+            <p style="margin-top: 7px;">
+                Belajar, Membaca, Berkembang.
+            </p>
+        </div>
+    </footer>
+
+    <script src="pinjaman.js"></script>
+
+</body>
+</html>
