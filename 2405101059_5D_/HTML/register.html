@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Daftar Anggota | Perpustakaan Kita</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(59, 130, 246, 0.15),
+                    transparent 35%
+                ),
+                #0b1120;
+        }
+
+        .register-navbar {
+            padding: 22px 0;
+        }
+
+        .register-navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        .back-link:hover {
+            color: #60a5fa;
+        }
+
+        .register-main {
+            display: grid;
+            place-items: center;
+            padding: 35px 20px 65px;
+        }
+
+        .register-layout {
+            width: min(100%, 1000px);
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            align-items: center;
+            gap: 65px;
+        }
+
+        .register-intro h1 {
+            margin: 20px 0;
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-size: clamp(35px, 4vw, 49px);
+            line-height: 1.2;
+            letter-spacing: -1.5px;
+        }
+
+        .register-intro h1 span {
+            color: #60a5fa;
+        }
+
+        .register-intro p {
+            color: #94a3b8;
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .register-features {
+            display: grid;
+            gap: 20px;
+            margin-top: 35px;
+        }
+
+        .register-feature {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .feature-icon {
+            width: 43px;
+            height: 43px;
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            color: #60a5fa;
+            background: rgba(59, 130, 246, 0.13);
+            border: 1px solid rgba(96, 165, 250, 0.15);
+            border-radius: 12px;
+        }
+
+        .register-feature h3 {
+            font-size: 13px;
+            margin-bottom: 3px;
+        }
+
+        .register-feature p {
+            font-size: 11px;
+        }
+
+        .register-card {
+            padding: 35px;
+            background: #141f35;
+            border: 1px solid rgba(148, 163, 184, 0.15);
+            border-radius: 22px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+        }
+
+        .register-card-header {
+            margin-bottom: 25px;
+        }
+
+        .register-card-header h2 {
+            font-size: 25px;
+            margin-bottom: 7px;
+        }
+
+        .register-card-header p {
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+        .register-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 17px 14px;
+        }
+
+        .form-group {
+            min-width: 0;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #e2e8f0;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper > i {
+            position: absolute;
+            top: 50%;
+            left: 13px;
+            transform: translateY(-50%);
+            color: #64748b;
+            font-size: 12px;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            height: 45px;
+            padding: 0 38px;
+            border: 1px solid #334155;
+            border-radius: 9px;
+            outline: none;
+            background: #0f172a;
+            color: #f8fafc;
+            font-size: 11px;
+            transition: 0.3s;
+        }
+
+        .input-wrapper input::placeholder {
+            color: #64748b;
+        }
+
+        .input-wrapper input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+        }
+
+        .password-toggle {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            border: none;
+            background: transparent;
+            color: #64748b;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .password-toggle:hover {
+            color: #60a5fa;
+        }
+
+        .terms {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+            margin: 22px 0;
+            color: #94a3b8;
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+        .terms input {
+            margin-top: 4px;
+            accent-color: #3b82f6;
+        }
+
+        .terms a {
+            color: #60a5fa;
+        }
+
+        .register-submit {
+            width: 100%;
+            min-height: 47px;
+            grid-column: 1 / -1;
+            border: none;
+            border-radius: 10px;
+            background: #3b82f6;
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .register-submit:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .register-submit i {
+            margin-left: 8px;
+        }
+
+        .register-message {
+            display: none;
+            grid-column: 1 / -1;
+            padding: 12px;
+            border-radius: 9px;
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+        .register-message.show {
+            display: block;
+        }
+
+        .register-message.error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+        }
+
+        .register-message.success {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #86efac;
+        }
+
+        .register-login {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(148, 163, 184, 0.15);
+            text-align: center;
+            color: #94a3b8;
+            font-size: 11px;
+        }
+
+        .register-login a {
+            color: #60a5fa;
+            font-weight: 700;
+        }
+
+        .register-footer {
+            padding: 20px;
+            text-align: center;
+            color: #64748b;
+            font-size: 11px;
+        }
+
+        @media (max-width: 800px) {
+            .register-layout {
+                grid-template-columns: 1fr;
+                max-width: 520px;
+                gap: 35px;
+            }
+
+            .register-intro {
+                text-align: center;
+            }
+
+            .register-features {
+                text-align: left;
+                max-width: 350px;
+                margin: 25px auto 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .register-navbar {
+                padding: 18px 0;
+            }
+
+            .register-navbar .logo {
+                font-size: 14px;
+            }
+
+            .back-link {
+                font-size: 10px;
+            }
+
+            .register-main {
+                padding: 25px 15px 45px;
+            }
+
+            .register-card {
+                padding: 25px 18px;
+            }
+
+            .register-intro h1 {
+                font-size: 35px;
+            }
+
+            .register-card-header h2 {
+                font-size: 22px;
+            }
+
+            .register-form {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full-width,
+            .register-submit,
+            .register-message {
+                grid-column: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="register-navbar">
+        <div class="container">
+
+            <a href="index.html" class="logo">
+                <span class="logo-icon">
+                    <i class="fa-solid fa-book-open"></i>
+                </span>
+
+                <span>
+                    Perpustakaan<span class="logo-accent">Kita.</span>
+                </span>
+            </a>
+
+            <a href="../index.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>
+                Kembali ke Beranda
+            </a>
+
+        </div>
+    </header>
+
+
+    <!-- MAIN -->
+    <main class="register-main">
+
+        <div class="register-layout">
+
+            <!-- INTRO -->
+            <section class="register-intro">
+
+                <span class="hero-badge">
+                    <i class="fa-solid fa-users"></i>
+                    BERGABUNG BERSAMA KAMI
+                </span>
+
+                <h1>
+                    Mulai Perjalanan<br>
+                    <span>Literasimu.</span>
+                </h1>
+
+                <p>
+                    Buat akun Perpustakaan Kita untuk menjelajahi koleksi buku,
+                    menemukan bacaan favorit, dan mengelola aktivitas
+                    perpustakaan dengan lebih mudah.
+                </p>
+
+                <div class="register-features">
+
+                    <div class="register-feature">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-book-open"></i>
+                        </div>
+
+                        <div>
+                            <h3>Jelajahi Koleksi Buku</h3>
+                            <p>Temukan bacaan sesuai minat dan kebutuhanmu.</p>
+                        </div>
+                    </div>
+
+                    <div class="register-feature">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-bookmark"></i>
+                        </div>
+
+                        <div>
+                            <h3>Kelola Peminjaman</h3>
+                            <p>Pantau buku yang dipinjam dan jadwal pengembalian.</p>
+                        </div>
+                    </div>
+
+                    <div class="register-feature">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+
+                        <div>
+                            <h3>Tambah Pengetahuan</h3>
+                            <p>Bangun kebiasaan membaca untuk masa depan.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- REGISTER FORM -->
+            <section class="register-card">
+
+                <div class="register-card-header">
+                    <span class="section-label">PENDAFTARAN ANGGOTA</span>
+
+                    <h2>Buat Akun Baru</h2>
+
+                    <p>Lengkapi data berikut untuk mendaftar.</p>
+                </div>
+
+
+                <form id="registerForm" class="register-form">
+
+                    <div class="form-group full-width">
+                        <label for="fullName">Nama Lengkap</label>
+
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-user"></i>
+
+                            <input
+                                type="text"
+                                id="fullName"
+                                name="fullName"
+                                placeholder="Masukkan nama lengkap"
+                                autocomplete="name"
+                                minlength="3"
+                                maxlength="100"
+                                required
+                            >
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="nim">NIM / Nomor Anggota</label>
+
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-id-card"></i>
+
+                            <input
+                                type="text"
+                                id="nim"
+                                name="nim"
+                                placeholder="Masukkan NIM"
+                                maxlength="30"
+                                required
+                            >
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="email">Alamat Email</label>
+
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-envelope"></i>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="nama@email.com"
+                                autocomplete="email"
+                                maxlength="150"
+                                required
+                            >
+                        </div>
+                    </div>
+
+
+                    <div class="form-group full-width">
+                        <label for="username">Nama Pengguna</label>
+
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-at"></i>
+
+                            <input
+                                type="text"
+                                id="username"
+                                name="username"
+                                placeholder="Buat nama pengguna"
+                                autocomplete="username"
+                                minlength="4"
+                                maxlength="30"
+                                pattern="[A-Za-z0-9_]+"
+                                title="Gunakan huruf, angka, atau garis bawah tanpa spasi."
+                                required
+                            >
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="password">Kata Sandi</label>
+
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Minimal 8 karakter"
+                                autocomplete="new-password"
+                                minlength="8"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                data-target="password"
+                                aria-label="Tampilkan kata sandi"
+                            >
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Konfirmasi Kata Sandi</label>
+
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-shield-halved"></i>
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                placeholder="Ulangi kata sandi"
+                                autocomplete="new-password"
+                                minlength="8"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                data-target="confirmPassword"
+                                aria-label="Tampilkan konfirmasi kata sandi"
+                            >
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <label class="terms full-width">
+                        <input type="checkbox" id="agreeTerms" required>
+
+                        <span>
+                            Saya menyatakan bahwa data yang saya masukkan benar
+                            dan bersedia mengikuti ketentuan keanggotaan
+                            Perpustakaan Kita.
+                        </span>
+                    </label>
+
+
+                    <div
+                        id="registerMessage"
+                        class="register-message"
+                        role="status"
+                        aria-live="polite"
+                    ></div>
+
+
+                    <button type="submit" class="register-submit">
+                        Daftar Sekarang
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </form>
+
+
+                <div class="register-login">
+                    Sudah memiliki akun?
+                    <a href="../login/login.html">Masuk sekarang</a>
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="register-footer">
+        <p>
+            &copy; <span id="currentYear"></span>
+            Perpustakaan Kita. Semua hak dilindungi.
+        </p>
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="assets/js/register.js"></script>
+
+</body>
+</html>
+```
